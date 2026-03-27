@@ -24,13 +24,14 @@ uvicorn api.index:app --reload --port 8000
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/` | Health check |
-| `POST` | `/api/scrape` | Scrape a LinkedIn profile |
+| `POST` | `/api/scrape` | Scrape a LinkedIn profile (requires `X-API-Key`) |
 
 ### Example Request
 
 ```bash
 curl -X POST http://localhost:8000/api/scrape \
   -H "Content-Type: application/json" \
+  -H "X-API-Key: your_secure_api_key" \
   -d '{"linkedin_url": "https://www.linkedin.com/in/srinivasgogula/"}'
 ```
 
@@ -46,6 +47,7 @@ vercel
 # Add your secret in the Vercel dashboard or via CLI:
 vercel env add APIFY_API_TOKEN
 vercel env add APIFY_ACTOR_ID
+vercel env add API_KEY
 ```
 
 > **Important**: Never commit `.env` — it is gitignored. Always set secrets via `vercel env add` or the Vercel dashboard.
