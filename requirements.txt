@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+apify-client
+pydantic
+python-dotenv
